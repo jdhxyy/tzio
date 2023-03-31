@@ -1,5 +1,5 @@
 // Copyright 2020-2020 The TZIOT Authors. All rights reserved.
-// io¿ÚÉè±¸¿ò¼Ü
+// ioå£è®¾å¤‡æ¡†æž¶
 // Authors: jdh99 <jdh821@163.com>
 
 #ifndef TZIO_H
@@ -7,69 +7,69 @@
 
 #include "tztype.h"
 
-// Êä³öÒý½ÅµÄÊä³öÄ£Ê½
+// è¾“å‡ºå¼•è„šçš„è¾“å‡ºæ¨¡å¼
 typedef enum {
     TZIO_OUT_PP = 0,
     TZIO_OUT_OD
 } TZIOOutMode;
 
-// ÊäÈëÒý½ÅµÄÉÏÀ­Ä£Ê½
+// è¾“å…¥å¼•è„šçš„ä¸Šæ‹‰æ¨¡å¼
 typedef enum {
     TZIO_NOPULL = 0,
     TZIO_PULLDOWN,
     TZIO_PULLUP
 } TZIOPullMode;
 
-// ÖÐ¶Ï´¥·¢Ä£Ê½
+// ä¸­æ–­è§¦å‘æ¨¡å¼
 typedef enum {
     TZIO_LO_TO_HI = 0,
     TZIO_HI_TO_LO,
     TZIO_TOGGLE
 } TZIOIrqPolarity;
 
-// TZIOConfigOutput ÉèÖÃÎªÊä³ö
-// ±¾º¯ÊýÐèÒªÇý¶¯¶¨Òå
+// TZIOConfigOutput è®¾ç½®ä¸ºè¾“å‡º
+// æœ¬å‡½æ•°éœ€è¦é©±åŠ¨å®šä¹‰
 void TZIOConfigOutput(int pin, TZIOPullMode pullMode, TZIOOutMode outMode);
 
-// TZIOConfigInput ÉèÖÃÎªÊäÈë
-// ±¾º¯ÊýÐèÒªÇý¶¯¶¨Òå
+// TZIOConfigInput è®¾ç½®ä¸ºè¾“å…¥
+// æœ¬å‡½æ•°éœ€è¦é©±åŠ¨å®šä¹‰
 void TZIOConfigInput(int pin, TZIOPullMode pullMode);
 
-// TZIOSetHigh Êä³ö¸ßµçÆ½
-// ±¾º¯ÊýÐèÒªÇý¶¯¶¨Òå
+// TZIOSetHigh è¾“å‡ºé«˜ç”µå¹³
+// æœ¬å‡½æ•°éœ€è¦é©±åŠ¨å®šä¹‰
 void TZIOSetHigh(int pin);
 
-// TZIOSetLow Êä³öµÍµçÆ½
-// ±¾º¯ÊýÐèÒªÇý¶¯¶¨Òå
+// TZIOSetLow è¾“å‡ºä½Žç”µå¹³
+// æœ¬å‡½æ•°éœ€è¦é©±åŠ¨å®šä¹‰
 void TZIOSetLow(int pin);
 
-// TZIOSet Êä³öµçÆ½
-// ±¾º¯ÊýÐèÒªÇý¶¯¶¨Òå
+// TZIOSet è¾“å‡ºç”µå¹³
+// æœ¬å‡½æ•°éœ€è¦é©±åŠ¨å®šä¹‰
 void TZIOSet(int pin, bool level);
 
-// TZIOToggle Êä³öÌø±äÐÅºÅ
-// ±¾º¯ÊýÐèÒªÇý¶¯¶¨Òå
+// TZIOToggle è¾“å‡ºè·³å˜ä¿¡å·
+// æœ¬å‡½æ•°éœ€è¦é©±åŠ¨å®šä¹‰
 void TZIOToggle(int pin);
 
-// TZIOReadInputPin ¶ÁÈ¡ÊäÈëÒý½ÅµçÆ½
-// ±¾º¯ÊýÐèÒªÇý¶¯¶¨Òå
+// TZIOReadInputPin è¯»å–è¾“å…¥å¼•è„šç”µå¹³
+// æœ¬å‡½æ•°éœ€è¦é©±åŠ¨å®šä¹‰
 bool TZIOReadInputPin(int pin);
 
-// TZIOReadOutputPin ¶ÁÈ¡Êä³öÒý½ÅµçÆ½
-// ±¾º¯ÊýÐèÒªÇý¶¯¶¨Òå
+// TZIOReadOutputPin è¯»å–è¾“å‡ºå¼•è„šç”µå¹³
+// æœ¬å‡½æ•°éœ€è¦é©±åŠ¨å®šä¹‰
 bool TZIOReadOutputPin(int pin);
 
-// TZIOConfigIrq ÅäÖÃÖÐ¶ÏÄ£Ê½
-// ±¾º¯Êý»áÅäÖÃioÎªÊäÈë,²»ÓÃÌáÇ°ÅäÖÃ.ÇÒÅäÖÃÍê³ÉºóÒÑ¾­Ê¹ÄÜÖÐ¶Ï
-// ±¾º¯ÊýÐèÒªÇý¶¯¶¨Òå
+// TZIOConfigIrq é…ç½®ä¸­æ–­æ¨¡å¼
+// æœ¬å‡½æ•°ä¼šé…ç½®ioä¸ºè¾“å…¥,ä¸ç”¨æå‰é…ç½®.ä¸”é…ç½®å®ŒæˆåŽå·²ç»ä½¿èƒ½ä¸­æ–­
+// æœ¬å‡½æ•°éœ€è¦é©±åŠ¨å®šä¹‰
 void TZIOConfigIrq(int pin, TZIOIrqPolarity polarity, TZEmptyFunc callback);
 
-// TZIOIrqEnable Ê¹ÄÜÖÐ¶Ï
-// ±¾º¯ÊýÐèÒªÇý¶¯¶¨Òå
+// TZIOIrqEnable ä½¿èƒ½ä¸­æ–­
+// æœ¬å‡½æ•°éœ€è¦é©±åŠ¨å®šä¹‰
 void TZIOIrqEnable(int pin);
 
-// TZIOIrqDisable ½ûÖ¹ÖÐ¶Ï
-// ±¾º¯ÊýÐèÒªÇý¶¯¶¨Òå
+// TZIOIrqDisable ç¦æ­¢ä¸­æ–­
+// æœ¬å‡½æ•°éœ€è¦é©±åŠ¨å®šä¹‰
 void TZIOIrqDisable(int pin);
 
 #endif
