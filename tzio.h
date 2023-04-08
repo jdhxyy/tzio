@@ -27,13 +27,22 @@ typedef enum {
     TZIO_TOGGLE
 } TZIOIrqPolarity;
 
+// TZIOWakeMode 唤醒模式
+typedef enum {
+    TZIO_WAKE_DISABLE = 0,
+    // 上升沿唤醒
+    TZIO_WAKE_HIGH,
+    // 下降沿唤醒
+    TZIO_WAKE_LOW
+} TZIOWakeMode;
+
 // TZIOConfigOutput 设置为输出
 // 本函数需要驱动定义
 void TZIOConfigOutput(int pin, TZIOPullMode pullMode, TZIOOutMode outMode);
 
 // TZIOConfigInput 设置为输入
 // 本函数需要驱动定义
-void TZIOConfigInput(int pin, TZIOPullMode pullMode);
+void TZIOConfigInput(int pin, TZIOPullMode pullMode, TZIOWakeMode wakeMode);
 
 // TZIOSetHigh 输出高电平
 // 本函数需要驱动定义
@@ -60,7 +69,6 @@ bool TZIOReadInputPin(int pin);
 bool TZIOReadOutputPin(int pin);
 
 // TZIOConfigIrq 配置中断模式
-// 本函数会配置io为输入,不用提前配置.且配置完成后已经使能中断
 // 本函数需要驱动定义
 void TZIOConfigIrq(int pin, TZIOIrqPolarity polarity, TZEmptyFunc callback);
 
@@ -71,5 +79,10 @@ void TZIOIrqEnable(int pin);
 // TZIOIrqDisable 禁止中断
 // 本函数需要驱动定义
 void TZIOIrqDisable(int pin);
+
+// TZIOConfigIrqPort 配置PORT中断模式
+// PORT中断只允许一个引脚.调用本函数之前需要调用TZIOConfigInput初始化
+// PORT中断是nRF52832中的特殊中断.需要驱动中定义
+void TZIOConfigIrqPort(int pin, TZEmptyFunc callback);
 
 #endif
